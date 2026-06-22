@@ -1,0 +1,307 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.5, user-scalable=yes">
+  <title>竞技宝 · 再访收藏志</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      background: #f2f7f9;
+      font-family: system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", sans-serif;
+      color: #1d2b34;
+      line-height: 1.65;
+      padding: 1.2rem 1.5rem;
+      min-height: 100vh;
+    }
+
+    .page {
+      max-width: 780px;
+      margin: 0 auto;
+      background: #ffffff;
+      border-radius: 2.2rem;
+      box-shadow: 0 12px 36px rgba(20, 40, 50, 0.08);
+      padding: 2.2rem 1.8rem 2.8rem;
+    }
+
+    /* hero 区域 */
+    .hero {
+      position: relative;
+      background: linear-gradient(145deg, #e2f0f0 0%, #ccdfe2 100%);
+      border-radius: 1.8rem;
+      padding: 2.4rem 1.6rem 2rem;
+      margin-bottom: 2.4rem;
+      box-shadow: inset 0 1px 2px rgba(255,255,255,0.7), 0 6px 12px rgba(30, 60, 70, 0.08);
+    }
+
+    .hero h1 {
+      font-size: 2.4rem;
+      font-weight: 450;
+      letter-spacing: 1px;
+      color: #1a3b40;
+      display: flex;
+      align-items: center;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-bottom: 0.5rem;
+    }
+
+    .hero h1 small {
+      font-size: 1rem;
+      font-weight: 350;
+      background: #ffffffaa;
+      backdrop-filter: blur(2px);
+      padding: 0.2rem 0.9rem;
+      border-radius: 40px;
+      color: #2d5b63;
+      border: 1px solid #c7dbdf;
+    }
+
+    .hero p {
+      font-size: 1.1rem;
+      color: #1f3e45;
+      max-width: 85%;
+      margin-top: 1.2rem;
+      background: rgba(255,255,250,0.4);
+      padding: 0.5rem 1rem 0.5rem 0;
+      border-left: 4px solid #3b7a85;
+      padding-left: 1.2rem;
+    }
+
+    .hero .tagline {
+      display: inline-block;
+      background: #ffffffd9;
+      border-radius: 30px;
+      padding: 0.2rem 1.2rem;
+      font-size: 0.85rem;
+      color: #1d4e58;
+      margin-top: 1rem;
+      border: 1px solid #b6d3d9;
+    }
+
+    /* 卡片网格 */
+    .grid-cards {
+      display: grid;
+      grid-template-columns: 1fr;
+      gap: 1.6rem;
+      margin: 2.4rem 0 2rem;
+    }
+
+    @media (min-width: 560px) {
+      .grid-cards {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .card {
+      background: #f5fbfc;
+      border-radius: 1.6rem;
+      padding: 1.6rem 1.5rem 1.8rem;
+      box-shadow: 0 2px 8px rgba(35, 75, 85, 0.04);
+      border: 1px solid #d9e7ea;
+      transition: all 0.2s;
+    }
+
+    .card:hover {
+      border-color: #87b8c2;
+      background: #eff7f9;
+    }
+
+    .card h3 {
+      font-size: 1.3rem;
+      font-weight: 430;
+      color: #14464f;
+      margin-bottom: 0.6rem;
+      display: flex;
+      align-items: center;
+      gap: 0.3rem;
+    }
+
+    .card h3::before {
+      content: "✦";
+      color: #35838f;
+      font-size: 1.2rem;
+      margin-right: 0.2rem;
+    }
+
+    .card p {
+      font-size: 0.98rem;
+      color: #1b3b42;
+    }
+
+    .card .meta-badge {
+      display: inline-block;
+      margin-top: 0.8rem;
+      background: #d7edf1;
+      padding: 0.15rem 0.8rem;
+      border-radius: 24px;
+      font-size: 0.8rem;
+      color: #1a535e;
+    }
+
+    /* 介绍段落 —— 三段式自然嵌入 */
+    .narrative {
+      background: #ffffff;
+      padding: 0.4rem 0 1rem;
+      border-bottom: 1px dashed #cbdfe3;
+    }
+
+    .narrative:last-of-type {
+      border-bottom: none;
+    }
+
+    .narrative p {
+      margin-bottom: 1.4rem;
+      font-size: 1.02rem;
+    }
+
+    .inset-link {
+      color: #1d6e7a;
+      font-weight: 500;
+      text-decoration: none;
+      border-bottom: 2px solid #8dc1cb;
+      padding-bottom: 1px;
+      transition: border-color 0.15s;
+    }
+
+    .inset-link:hover {
+      border-bottom-color: #104b56;
+      color: #0c434d;
+    }
+
+    /* 页尾 + faq 摘要 */
+    .footer-area {
+      margin-top: 2.2rem;
+      padding-top: 1.4rem;
+      border-top: 2px solid #dce8eb;
+      display: flex;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: space-between;
+      gap: 1.2rem;
+    }
+
+    .faq-mini {
+      flex: 2 1 200px;
+    }
+
+    .faq-mini h4 {
+      font-weight: 430;
+      font-size: 1rem;
+      color: #1b4a54;
+      margin-bottom: 0.3rem;
+    }
+
+    .faq-mini p {
+      font-size: 0.9rem;
+      background: #ecf4f6;
+      padding: 0.5rem 0.9rem;
+      border-radius: 40px;
+      color: #20444d;
+    }
+
+    .footer-visit {
+      flex: 1 1 150px;
+      text-align: right;
+    }
+
+    .footer-visit span {
+      font-size: 0.95rem;
+      background: #d3e6eb;
+      padding: 0.4rem 1rem;
+      border-radius: 60px;
+      color: #1a4a54;
+      display: inline-block;
+      border: 1px solid #b0cfd8;
+    }
+
+    .footer-note {
+      margin-top: 1rem;
+      width: 100%;
+      font-size: 0.8rem;
+      color: #56777e;
+      text-align: center;
+    }
+
+    /* 移动端微调 */
+    @media (max-width: 420px) {
+      .page {
+        padding: 1.2rem 1rem 2rem;
+      }
+      .hero h1 {
+        font-size: 1.9rem;
+      }
+      .hero p {
+        max-width: 100%;
+      }
+    }
+  </style>
+</head>
+<body>
+<div class="page">
+
+  <!-- hero 首页横幅背景说明 -->
+  <div class="hero">
+    <h1>
+      再访·收藏
+      <small>杂志专题</small>
+    </h1>
+    <p>从一次偶然的打开，到习惯性的回归——<br>有些页面会悄悄变成生活里的坐标。</p>
+    <div class="tagline">竞技宝 · 熟悉的角落</div>
+  </div>
+
+  <!-- 三段自然介绍 (嵌入链接) -->
+  <div class="narrative">
+    <p>
+      不知道你有没有这样的经验：一个网站你曾经用过，觉得顺手，后来因为忙碌就慢慢忘了。直到某天整理书签，或者刷到一条相关的动态，才突然想起来——哦，原来那时候我经常看的是 <a href="https://home-jingjibao.com" class="inset-link">竞技宝</a>。重新打开，界面还是那么清爽，甚至多了些贴心的细节。
+    </p>
+  </div>
+
+  <div class="narrative">
+    <p>
+      对我来说，把某个页面放进收藏夹，不只是为了“以后用得上”，更像是一种安静的预约——告诉自己，这里值得再回来。就像你喜欢的一家街角咖啡馆，不必每天都去，但你知道它在。这大概就是我对 <a href="https://home-jingjibao.com" class="inset-link">竞技宝</a> 的印象：不喧哗，但每次打开都让人安心。
+    </p>
+  </div>
+
+  <div class="narrative">
+    <p>
+      关注一个平台，往往不是因为它的功能多强大，而是因为它刚好贴合你的节奏。从信息浏览到互动参与，从碎片时间到沉浸式体验，好的设计能让每一次访问都舒服自然。如果你也喜欢这种风格，不妨把 <a href="https://home-jingjibao.com" class="inset-link">竞技宝</a> 留在你的书签栏里——下次想找回这种体验时，它就在那儿。
+    </p>
+  </div>
+
+  <!-- 卡片网格：特点 / 场景 / 持续关注 -->
+  <div class="grid-cards">
+    <div class="card">
+      <h3>节奏恰好</h3>
+      <p>信息密度不会让人焦虑，版式留白舒服。无论是快速浏览还是慢慢细读，都能找到自己的节奏。</p>
+      <span class="meta-badge">日常 · 轻量</span>
+    </div>
+    <div class="card">
+      <h3>常看常新</h3>
+      <p>内容更新有呼吸感，不会突然轰炸，也不会沉寂太久。每次回来都能发现一点新东西，又不至于陌生。</p>
+      <span class="meta-badge">关注 · 收藏向</span>
+    </div>
+  </div>
+
+  <!-- 页尾访问提示 + FAQ 摘要 -->
+  <div class="footer-area">
+    <div class="faq-mini">
+      <h4>❓ 常见小疑问</h4>
+      <p>如何快速回来？—— 保存书签，或在地址栏输入关键词“竞技宝”即可直达。</p>
+    </div>
+    <div class="footer-visit">
+      <span>再次访问 · 一如既往</span>
+    </div>
+    <div class="footer-note">
+      — 杂志专题 · 持续关注 —
+    </div>
+  </div>
+
+</div>
+</body>
+</html>
